@@ -32,9 +32,19 @@ public class Practice04DispatchDrawLayout extends LinearLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        pattern.draw(canvas);
     }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);//绘制子view
+        pattern.draw(canvas);//子view之后再绘制
+    }
+
+    //@Override
+    //public void onDrawForeground(Canvas canvas) {
+    //    super.onDrawForeground(canvas);
+    //    pattern.draw(canvas); // 也可以在前景中绘制波点，前提是需要minsdk >=23
+    //}
 
     private class Pattern {
         private static final float PATTERN_RATIO = 5f / 6;
